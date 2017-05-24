@@ -6,19 +6,20 @@
     android:orientation="vertical"
     tools:context="com.app.exp.testapp.MainActivity">
 
-    <FrameLayout
+    <fragment
         android:id="@+id/container_sender"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:name="com.app.exp.testapp.MessageSender"
 
         />
-    <FrameLayout
+    <fragment
         android:id="@+id/container_receiver"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-
+        android:name="com.app.exp.testapp.MessageReceiver"
         />
 
 
