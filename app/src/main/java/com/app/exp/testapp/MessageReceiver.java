@@ -24,5 +24,10 @@ public class MessageReceiver extends Fragment {
         View view = inflater.inflate(R.layout.message_receiver, container, false);
         ButterKnife.bind(this,view);
         return view;
+
+    }
+    public void updateMessage(String message) {
+        TextView receiver = (TextView) getActivity().findViewById(R.id.receiver);
+        receiver.setText(message);
     }
 }

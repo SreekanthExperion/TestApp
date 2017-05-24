@@ -20,7 +20,7 @@ import butterknife.OnClick;
  */
 
 public class MessageSender extends Fragment {
-    MessageInterface mCallback;
+    MessageCallback mCallback;
     @BindView(R.id.send)
     Button send;
     @BindView(R.id.bodytosend)
@@ -38,9 +38,21 @@ public class MessageSender extends Fragment {
         Toast.makeText(getActivity(), "Click", Toast.LENGTH_SHORT).show();
         mCallback.onSendButtonClicked(bodytosend.getText().toString());
     }
-    public interface MessageInterface {
-        public void onSendButtonClicked(String message);
+    interface MessageCallback {
+        void onSendButtonClicked(String message);
     }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (MessageCallback) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
 }
